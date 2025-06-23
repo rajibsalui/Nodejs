@@ -1,0 +1,24 @@
+//- views/index.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Express.js Users Demo
+    style.
+      body { font-family: Arial, sans-serif; margin: 2rem; }
+      h1 { color: #333; }
+      ul { list-style: none; padding: 0; }
+      li { background: #f4f4f4; margin: 0.5rem 0; padding: 0.5rem; border-radius: 4px; }
+      form { margin-top: 1rem; }
+      input[type="text"] { padding: 0.5rem; width: 200px; }
+      button { padding: 0.5rem 1rem; margin-left: 0.5rem; }
+  body
+    h1 User List
+    ul#user-list
+      each user in users
+        li #{user.id}: #{user.name}
+    h2 Add a New User
+    form(action="/users" method="POST")
+      input(type="text" name="name" placeholder="Enter name" required)
+      button(type="submit") Add User
